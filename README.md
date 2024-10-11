@@ -1,78 +1,99 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Marketplace Laravel com PagSeguro
+Este projeto é um marketplace desenvolvido com Laravel 6, integrado com o Transparent Checkout do PagSeguro para processamento de pagamentos de forma segura e eficiente.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Funcionalidades
+ - **Gerenciamento de Produtos**: Criação, edição e exclusão de produtos pelos vendedores.
+ - **Carrinho de Compras**: Adicione produtos ao carrinho, veja o resumo e prossiga para o pagamento.
+ - **Checkout Transparente com PagSeguro**: Integração com o PagSeguro para processar pagamentos sem redirecionar o usuário para fora do site.
+ - **Administração de Usuários**: Sistema de cadastro, login e gerenciamento de vendedores e compradores.
+ - **Painel de Controle**: Dashboard para administradores gerenciarem o marketplace (usuários, produtos e pedidos).
 
-## About Laravel
+## Tecnologias Utilizadas
+ - **Laravel 6**: Framework PHP para desenvolvimento do backend.
+ - **MySQL**: Banco de dados relacional usado para armazenar dados de usuários, produtos e pedidos.
+ - **PagSeguro Transparent Checkout**: Para processar pagamentos diretamente no site sem redirecionamento.
+ - **HTML/CSS/JS**: Usado para criar o frontend do marketplace.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Pré-requisitos
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
+- PHP >= 7.2
+- Composer
+- MySQL
+- Node.js e NPM (para gerenciamento de dependências do frontend)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Instalação
+1. Clone o repositório:
+    ```
+    git clone https://github.com/Jaylton/marketplace-laravel.git
+    cd marketplace-laravel
+    ```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2. Instale as dependências do PHP:
+    ```
+    composer install
+    ```
 
-## Learning Laravel
+3. Instale as dependências do frontend:
+    ```
+    npm install
+    ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3. Configure o arquivo .env com suas credenciais de banco de dados e do PagSeguro:
+    ```
+    cp .env.example .env
+    ```
+    
+4. Atualize as seguintes variáveis no arquivo .env com suas credenciais:
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=seu_banco
+    DB_USERNAME=seu_usuario
+    DB_PASSWORD=sua_senha
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    PAGSEGURO_EMAIL=seu-email@exemplo.com
+    PAGSEGURO_TOKEN=seu-token-pagseguro
+    PAGSEGURO_ENV=production # ou sandbox para ambiente de testes
+    ```
 
-## Laravel Sponsors
+5. Gere a chave da aplicação Laravel:
+    ```
+    php artisan key:generate
+    ```
+    
+6. Execute as migrações e seeders do banco de dados:
+    ```
+    php artisan migrate --seed
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+7. Inicie o servidor de desenvolvimento:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+    ```
+    php artisan serve
+    ```
 
-## Contributing
+## Integração com PagSeguro Transparent Checkout
+Este projeto utiliza a integração do Transparent Checkout do PagSeguro, que permite processar pagamentos diretamente no seu site sem redirecionar os clientes. A integração é feita da seguinte forma:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. **Tokenização do Cartão**: No frontend, o PagSeguro coleta os dados do cartão de crédito e gera um token, que é enviado ao backend.
+2. **Envio do Pedido**: O token do cartão é enviado ao backend, onde a transação é finalizada através da API do PagSeguro.
+3. **Status do Pagamento**: O backend recebe o status da transação e o atualiza no sistema.
 
-## Code of Conduct
+## Configuração no PagSeguro
+1. Acesse o painel do PagSeguro.
+2. Ative o Transparent Checkout.
+3. No ambiente sandbox, use as credenciais de teste para simular transações.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Referência de Documentação
+ - PagSeguro API Reference
+ - Laravel PagSeguro Package (opcional, caso você use um pacote para facilitar a integração)
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Estrutura do Projeto
+ - **app/**: Contém os controladores, modelos e lógica de negócios do Laravel.
+ - **resources/views/**: Arquivos Blade para a interface do usuário.
+ - **routes/web.php**: Arquivo de rotas da aplicação.
+ - **public/js/**: Scripts JavaScript relacionados ao PagSeguro Transparent Checkout.
+ - **database/**: Migrações e seeders do banco de dados.
+ 
+ 
